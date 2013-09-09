@@ -22,6 +22,7 @@
 				%h4 Sube tu video
 				= form_for(@video, :url => videos_path, :method => :post, :html => {:multipart => true, :class => "form-horizontal", :role => "form" }) do |f|
 					.form-group
+						= f.hidden_field :email, :value => current_user.email
 						= f.label :message, "Mensaje *"
 						= f.text_field :message, :maxlength=> 100, :class => "form-control", :required => true
 					.form-group

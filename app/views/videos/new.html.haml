@@ -2,9 +2,7 @@
   .row
     .col-lg-12
       = form_for(@video, :url => videos_path, :method => :post, :html => {:multipart => true, :class => "form-horizontal", :role => "form" }) do |f|
-        .form-group
-          = f.label :email, "Email *"
-          = f.email_field :email, :maxlength=> 50, :class => "form-control", :required => true
+        = f.hidden_field :email, :value => current_user.email
         .form-group
           = f.label :message, "Mensaje *"
           = f.text_field :message, :maxlength=> 100, :class => "form-control", :required => true

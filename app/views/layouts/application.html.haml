@@ -17,7 +17,16 @@
 		= csrf_meta_tags
 	%body
 		/ Header navbar
-		%nav{class: "navbar navbar-inverse"}
+		%nav.navbar.navbar-inverse{role: "navigation"}
 			.navbar-header
-				%a{class: "navbar-brand"} Video Marketing APP - (First Project Cloud Computing Course)
+				%a.navbar-brand Video Marketing APP
+			.collapse.navbar-collapse.navbar-ex1-collapse
+				%ul.nav.navbar-nav
+					%li
+						= link_to("Home", root_path) unless current_page?(root_url)
+					%li
+						= link_to_if(user_signed_in?, "Videos publicados", { :controller => "videos", :action => "index" })
+				%ul.nav.navbar-nav.navbar-right
+					%li
+						= link_to_if(user_signed_in?, "Cerrar sesión", destroy_user_session_path, method: :delete)
 		= yield
