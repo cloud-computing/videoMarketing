@@ -18,6 +18,6 @@ class VideosController < ApplicationController
   end
 
   def index
-    @videos = Video.ordered_desc_by_created_at
+    @videos = Video.ordered_desc_by_created_at.page(params[:page]).per(30)
   end
 end

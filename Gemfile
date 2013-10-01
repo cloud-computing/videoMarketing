@@ -31,9 +31,6 @@ gem 'thin', '~> 1.5.1'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 
-# Haml template support
-gem 'haml-rails'
-
 # unique ID generation library.
 gem 'uuidtools', '2.1.4'
 

@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(version: 20130908151143) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "video_converted"
-    t.datetime "converted_finished_at", default: '2013-09-09 01:22:24'
+    t.datetime "converted_finished_at", default: '2013-09-16 20:36:50'
     t.string   "email"
   end
 

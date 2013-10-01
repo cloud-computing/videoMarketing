@@ -9,7 +9,7 @@ class Video < ActiveRecord::Base
 	email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 	validates :email, :presence => true, :format => { :with => email_regex }
 
-	scope :converted, where('videos.converted_at IS NOT NULL')
+	scope :converted, where('videos.converted_finished_at IS NOT NULL')
 	scope :ordered_desc_by_created_at, order('videos.created_at DESC')
 
 	PROCESSING_STATE = 0
@@ -29,8 +29,6 @@ class Video < ActiveRecord::Base
 			puts 'Video url: '+video_url
 
 			movie = FFMPEG::Movie.new(video_url)
-			#options = {video_codec: "libx264",
-			#          audio_codec: "libfaac"}
 			options = {video_codec: "libx264"}
 			video_name = self.video.path.split('/').last
 			video_converted_url = "#{Rails.root}/tmp/converted_#{UUIDTools::UUID.random_create.hexdigest}_"+video_name[0,video_name.size-4]+'.mp4'

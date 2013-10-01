@@ -16,6 +16,7 @@
 				%div{id: "myElement#{video.id}"} Cargando el reproductor...
 				:javascript
 					jwplayer("myElement#{video.id}").setup({file: "#{video.video_converted.url}", width: 640, height: 480, title: "#{video.message}"});
+				%p= video.message
 			- paginate @videos, :window => 2
 		.col-lg-3
 			- if user_signed_in?
