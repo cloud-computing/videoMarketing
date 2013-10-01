@@ -4,10 +4,10 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.0'
 
 # Use postgresql as the database for Active Record
-gem 'pg', '0.16.0'
+gem "mysql2", "~> 0.3.13"
 
 # File upload orm mapping
-gem "carrierwave", "0.9.0"
+gem "carrierwave", "~> 0.9.0"
 
 # Flexible authentication solution for Rails with Warden
 gem 'devise', '~> 3.1.0'
