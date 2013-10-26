@@ -17,8 +17,8 @@ development:
   database: <%= ENV['VIDEOMARKETING_DEV_DB_DATABASE_NAME'] %>
   username: <%= ENV['VIDEOMARKETING_DEV_DB_DATABASE_USER'] %>
   password: <%= ENV['VIDEOMARKETING_DEV_DB_DATABASE_PASSWORD'] %>
-  host: localhost
-  #host: videomarketing.cxl9rpz2oawv.us-east-1.rds.amazonaws.com
+  #host: localhost
+  host: video-marketing.cxl9rpz2oawv.us-east-1.rds.amazonaws.com
   secure_auth: false
   port: 3306
   encoding: utf8
@@ -46,8 +46,8 @@ test:
   database: <%= ENV['VIDEOMARKETING_TEST_DB_DATABASE_NAME'] %>
   username: <%= ENV['VIDEOMARKETING_TEST_DB_DATABASE_USER'] %>
   password: <%= ENV['VIDEOMARKETING_TEST_DB_DATABASE_PASSWORD'] %>
-  host: localhost
-  #host: videomarketing.cxl9rpz2oawv.us-east-1.rds.amazonaws.com
+  #host: localhost
+  host: video-marketing.cxl9rpz2oawv.us-east-1.rds.amazonaws.com
   secure_auth: false
   port: 3306
   encoding: utf8
@@ -57,8 +57,8 @@ production:
   database: <%= ENV['VIDEOMARKETING_PROD_DB_DATABASE_NAME'] %>
   username: <%= ENV['VIDEOMARKETING_PROD_DB_DATABASE_USER'] %>
   password: <%= ENV['VIDEOMARKETING_PROD_DB_DATABASE_PASSWORD'] %>
-  host: localhost
-  #host: videomarketing.cxl9rpz2oawv.us-east-1.rds.amazonaws.com
+  #host: localhost
+  host: video-marketing.cxl9rpz2oawv.us-east-1.rds.amazonaws.com
   secure_auth: false
   port: 3306
   encoding: utf8

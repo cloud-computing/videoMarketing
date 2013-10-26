@@ -8,6 +8,7 @@ gem "mysql2", "~> 0.3.13"
 
 # File upload orm mapping
 gem "carrierwave", "~> 0.9.0"
+gem "fog", "~> 1.15.0"
 
 # Flexible authentication solution for Rails with Warden
 gem 'devise', '~> 3.1.0'
