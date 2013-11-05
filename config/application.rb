@@ -1,6 +1,11 @@
 require File.expand_path('../boot', __FILE__)
 
-require 'rails/all'
+# Pick the frameworks you want:
+# require "active_record/railtie"
+require "action_controller/railtie"
+require "action_mailer/railtie"
+require "sprockets/railtie"
+require "rails/test_unit/railtie"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -18,17 +23,14 @@ module VideoMarketing
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
-    config.i18n.default_locale = :es
+    # config.i18n.default_locale = :de
 
-    config.time_zone = 'Bogota'
     config.encoding = "utf-8"
 
-    # Enable the asset pipeline
-    config.assets.enabled = true
+    # Configure sensitive parameters which will be filtered from the log file.
+    config.filter_parameters += [:password]
 
-    config.assets.paths << "#{Rails.root}/app/assets/videos"
-
-    # Devise configuration if deploying on Heroku with Rails 3.2 only
-    config.assets.initialize_on_precompile = false
+    # Enable escaping HTML in JSON.
+    config.active_support.escape_html_entities_in_json = true
   end
 end

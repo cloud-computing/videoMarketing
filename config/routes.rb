@@ -1,8 +1,13 @@
 VideoMarketing::Application.routes.draw do
 
   resources :videos
-  devise_for :users
   get "/delayed_job" => DelayedJobWeb, :anchor => false
+
+  get "/auth/:provider/callback" => "sessions#callback"
+  get "/logout" => "sessions#destroy", :as => :logout
+  get "/logon" => "sessions#new"
+  post "/sessions/create" => "sessions#create"
+  post "/login" => "sessions#login_attempt"
 
   root :to => "home#index"
   

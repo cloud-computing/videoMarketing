@@ -15,11 +15,10 @@
 			- @videos.each do |video|
 				%div{id: "myElement#{video.id}"} Cargando el reproductor...
 				:javascript
-					jwplayer("myElement#{video.id}").setup({file: "#{video.video_converted.url}", width: 640, height: 480, title: "#{video.message}"});
+					jwplayer("myElement#{video.id}").setup({file: "rtmp://s2s05p0x276k5a.cloudfront.net/cfx/st/mp4:#{video.video_converted_url.split('/').last}", width: 640, height: 480, title: "#{video.message}"});
 				%p= video.message
-			- paginate @videos, :window => 2
 		.col-lg-3
-			- if user_signed_in?
+			- if current_user
 				%h4 Sube tu video
 				= form_for(@video, :url => videos_path, :method => :post, :html => {:multipart => true, :class => "form-horizontal", :role => "form" }) do |f|
 					.form-group
@@ -30,25 +29,16 @@
 						= f.label :video, "Video *"
 						= f.file_field :video
 					.form-group= f.submit "Enviar"
-				Sesión actual
-				%br/
-				= current_user.email
-				%br/
-				= link_to "Cerrar sesión", destroy_user_session_path, method: :delete
 			- else
-				%h2= t(".sign_in")
-				= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+				%h2 Iniciar sesión
+				= form_for(resource, :as => resource_name, :url => "/login") do |f|
 					%div
 						= f.label :email, "Email *"
 						%br/
 						= f.email_field :email, :autofocus => true
 					%div
-						= f.label :password
+						= f.label :login_password, "Contraseña *"
 						%br/
-						= f.password_field :password
-					- if devise_mapping.rememberable?
-						%div
-							= f.check_box :remember_me
-							= f.label :remember_me
+						= f.password_field :login_password
 					%div= f.submit "Iniciar sesión"
-				= render "devise/shared/links"
+				= link_to("Registrarse", '/logon', method: :get)

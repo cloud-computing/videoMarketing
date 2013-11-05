@@ -1,0 +1,19 @@
+production:
+  bucket: <%= ENV['VIDEOMARKETING_AWS_S3_BUCKET_NAME'] %>
+  access_key_id: <%= ENV['AWS_ACCESS_KEY_ID'] %>
+  secret_access_key: <%= ENV['AWS_SECRET_ACCESS_KEY'] %>
+  dynamo_db_endpoint: <%= ENV['VIDEOMARKETING_DEV_DB_DATABASE_NAME'] %>
+ 
+development:
+  access_key_id: xxx
+  secret_access_key: xxx
+  dynamo_db_endpoint: localhost
+  dynamo_db_port: 4567
+  use_ssl: false
+ 
+test:
+  access_key_id: xxx
+  secret_access_key: xxx
+  dynamo_db_endpoint: localhost
+  dynamo_db_port: 4567
+  use_ssl: false

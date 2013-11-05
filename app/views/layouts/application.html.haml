@@ -3,8 +3,10 @@
 	%head
 		%title Video Marketing APP
 
+		%meta{name: "viewport", content: "width=device-width, initial-scale=1.0"}
+
 		/ Boostrap Latest compiled and minified CSS
-		%link{:href => "//netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/css/bootstrap.min.css", :rel => "stylesheet"}
+		%link{:href => "//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css", :rel => "stylesheet"}
 
 		= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
 		= javascript_include_tag "application", "data-turbolinks-track" => true
@@ -12,12 +14,12 @@
 		= javascript_include_tag 'jwplayer/jwplayer.html5.js', :media => 'screen'
 
 		/ Boostrap Latest compiled and minified JavaScript
-		%script{:src => "//netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/js/bootstrap.min.js"}
+		%script{:src => "//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"}
 
 		= csrf_meta_tags
 	%body
 		/ Header navbar
-		%nav.navbar.navbar-inverse{role: "navigation"}
+		%navbar.navbar-default{role: "navigation"}
 			.navbar-header
 				%a.navbar-brand Video Marketing APP
 			.collapse.navbar-collapse.navbar-ex1-collapse
@@ -25,8 +27,11 @@
 					%li
 						= link_to("Home", root_path) unless current_page?(root_url)
 					%li
-						= link_to_if(user_signed_in?, "Videos publicados", { :controller => "videos", :action => "index" })
+						= link_to("Videos publicados", { :controller => "videos", :action => "index" }) unless !current_user
 				%ul.nav.navbar-nav.navbar-right
 					%li
-						= link_to_if(user_signed_in?, "Cerrar sesión", destroy_user_session_path, method: :delete)
+						- if current_user
+							= link_to("Cerrar sesión", '/logout', method: :get)
+						- else
+							= link_to("Iniciar sesión con Twitter", '/auth/twitter', method: :get)
 		= yield

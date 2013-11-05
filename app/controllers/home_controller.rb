@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
 	def index
-		@videos = Video.converted.ordered_desc_by_created_at.page(params[:page]).per(30)
+		@videos = Video.where(:state => Video::CONVERTED_STATE.to_s()).all
 		@video = Video.new
 	end
 end

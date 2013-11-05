@@ -1,0 +1,30 @@
+.container
+	.row
+		.col-lg-6
+			%h2 Formulario de registro
+			= form_for(:user, :url => "/sessions/create", :html => {:class => "form-horizontal", :role => "form" }) do |f|
+				.form-group
+					= f.label :name, "Nombre de usuario *", :class => "col-sm-4 control-label"
+					.col-sm-8
+						= f.text_field :name, :maxlength=> 100, :class => "form-control", :required => true
+				.form-group
+					= f.label :email, "Correo electrónico *", :class => "col-sm-4 control-label"
+					.col-sm-8
+						= f.text_field :email, :maxlength=> 100, :class => "form-control", :required => true
+				.form-group
+					= f.label :password, "Contraseña *", :class => "col-sm-4 control-label"
+					.col-sm-8
+						= f.password_field :password, :class => "form-control", :required => true
+				.form-group
+					= f.label :password_confirmation, "Confirmación de contraseña *", :class => "col-sm-4 control-label"
+					.col-sm-8
+						= f.password_field :password_confirmation, :class => "form-control", :required => true
+				.form-group
+					.col-sm-offset-4.col-sm-8
+						= f.submit "Registrarse", :class => "btn btn-default"
+			- if @user.errors.any?
+				.alert.alert-danger
+					%ul
+						- for message_error in @user.errors.full_messages
+							%li
+								= message_error

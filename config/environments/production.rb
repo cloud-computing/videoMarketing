@@ -14,6 +14,14 @@ VideoMarketing::Application.configure do
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
 
+  # Memcached caching
+  #elasticache = Dalli::ElastiCache.new(config_endpoint)
+  #elasticache = Dalli::ElastiCache.new("videomarketingcache.rozavv.cfg.use1.cache.amazonaws.com:11211", :expires_in => 1.day, :namespace => "videomarketingcache", :compress => true)
+  #config.cache_store = :dalli_store, elasticache
+  config.cache_store = :dalli_store, 'videomarketingcache.rozavv.cfg.use1.cache.amazonaws.com:11211', { :namespace => "videoMarketing", :expires_in => 1.day, :compress => true }
+  #config.cache_store = :dalli_store, elasticache.servers, {:expires_in => 1.day, :compress => true}
+  #config.cache_store = :dalli_store, { :namespace => "VideoMarketing", :expires_in => 1.day, :compress => true }
+
   # Enable Rack::Cache to put a simple HTTP cache in front of your application
   # Add `rack-cache` to your Gemfile before enabling this.
   # For large-scale production use, consider using a caching reverse proxy like nginx, varnish or squid.

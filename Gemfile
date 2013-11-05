@@ -3,16 +3,30 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 
-# Use postgresql as the database for Active Record
-gem "mysql2", "~> 0.3.13"
+# Dynamo library for rails
+gem 'dynamoid'
 
 # File upload orm mapping
 gem "carrierwave", "~> 0.9.0"
 gem "fog", "~> 1.15.0"
 
-# Flexible authentication solution for Rails with Warden
-gem 'devise', '~> 3.1.0'
+# Password security
+gem 'bcrypt-ruby', :require => 'bcrypt'
+
+# Jobs with Amazon SQL
+gem 'delayed_job'
+gem 'dj_sqs'
+gem 'delayed_job_web'
+
+# Flexible authentication solution for Rails
+gem 'omniauth'
+gem 'omniauth-twitter'
 gem 'protected_attributes'
+
+# High performance memcached client for Ruby
+gem "dalli", "~> 2.6.4"
+# A wrapper for Dalli with support for AWS ElastiCache Auto Discovery
+gem "dalli-elasticache", "~> 0.1.0"
 
 # Interface between Ruby and ImageMagick.
 gem 'rmagick', '2.13.2'
@@ -43,12 +57,6 @@ gem 'kaminari', '0.14.1'
 
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
-
-# ActiveRecord backend for Delayed::Job
-gem 'delayed_job_active_record', '4.0.0'
-
-# Web interface for delayed_job inspired by resque
-gem 'delayed_job_web', '1.2.0'
 
 # Call JavaScript code and manipulate JavaScript objects from Ruby. Call Ruby code and manipulate Ruby objects from JavaScript.
 gem 'therubyracer', '0.12.0'

@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-VideoMarketing::Application.config.secret_key_base = '59e12b7cea608a82a1c25d74b8844c7eb50a7b2d209a6bf465509f4342c3307d83f2a7b5b86d571113994af816040c051d447ef6071452b8b8e1ce6fd418fd91'
+VideoMarketing::Application.config.secret_key_base = '17bc38cb1c37c3d03bac151ce284ede9cff65ee65750008d02f0b730032eb910da92b05c0f2d6d3c6ff37a31a4a15dea4b27fe239611c07480ce3948eceb0555'
